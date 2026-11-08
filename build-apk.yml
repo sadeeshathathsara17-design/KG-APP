@@ -15,6 +15,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Unzip project (if the zip was uploaded as a file)
+        run: |
+          if [ ! -f package.json ]; then
+            unzip -oq KG-Traders-Project.zip
+          fi
+          ls
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
